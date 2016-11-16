@@ -28,13 +28,12 @@ ADD 00-vmcs.conf /etc/ld.so.conf.d/
 RUN ldconfig
 
 # install the motion-mmal software
-RUN sudo apt-get install -y motion \
-    && cd /tmp \
-    && sudo apt-get install -y libjpeg62 libjpeg62-dev libavformat53 libavformat-dev libavcodec53 libavcodec-dev libavutil51 libavutil-dev libc6-dev zlib1g-dev libmysqlclient18 libmysqlclient-dev libpq5 libpq-dev \
-    && wget --no-check-certificate https://www.dropbox.com/s/xdfcxm5hu71s97d/motion-mmal.tar.gz \
+RUN apt-get update && apt-get install -y motion libjpeg62 libjpeg62-dev libavformat53 libavformat-dev libavcodec53 libavcodec-dev libavutil51 libavutil-dev libc6-dev zlib1g-dev libmysqlclient18 libmysqlclient-dev libpq5 libpq-dev wget libav-tools
+
+# overwrite custom motion executable and config file made for pi
+RUN wget --no-check-certificate https://www.dropbox.com/s/xdfcxm5hu71s97d/motion-mmal.tar.gz \
     && tar zxvf motion-mmal.tar.gz \
     && sudo mv motion /usr/bin/motion \
     && sudo mv motion-mmalcam.conf /etc/motion.conf
 
-# install avconv in order to do movie video conversion
-RUN apt-get update && apt-get install -y libav-tools
+ENTRYPOINT ["motion"]
