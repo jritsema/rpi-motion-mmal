@@ -36,3 +36,5 @@ RUN sudo apt-get install -y motion \
     && sudo mv motion /usr/bin/motion \
     && sudo mv motion-mmalcam.conf /etc/motion.conf
 
+# install avconv in order to do movie video conversion
+RUN apt-get update && apt-get install -y libav-tools
