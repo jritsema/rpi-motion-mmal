@@ -1,7 +1,7 @@
 ### jritsema/rpi-motion-mmal
 
 # motion-mmal seems to depend on libraries that are only in wheezy, not jessie
-FROM resin/rpi-raspbian:wheezy
+FROM resin/rpi-raspbian:wheezy-20170628
 
 # build raspberry pi userland tools from source (allows access to gpu, camera, etc.)
 RUN apt-get update \
@@ -64,8 +64,9 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && tar -xzf "node-v$NODE_VERSION-linux-armv6l.tar.gz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-armv6l.tar.gz" SHASUMS256.txt SHASUMS256.txt.asc
 
-# install rekognize
+# install image recognition tools
 RUN npm install -g https://github.com/jritsema/rekognize.git
+RUN npm install -g https://github.com/jritsema/rekognotify.git#0.1.0-rc.4
 
 ENTRYPOINT ["motion"]
 
