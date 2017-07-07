@@ -62,11 +62,11 @@ motion:
   environment:
     - "AWS_ACCESS_KEY_ID=xyz"
     - "AWS_SECRET_ACCESS_KEY=xyz"
-    - "REKOGNOTIFY_MATCH='Human,People,Person,Animal,Mammal'
+    - "REKOGNOTIFY_MATCH=Human,People,Person,Animal,Mammal"
     - "REKOGNOTIFY_HOST=smtp.server.net"
     - "REKOGNOTIFY_USER=user@server.net"
     - "REKOGNOTIFY_PASS=xyz"
-    - "REKOGNOTIFY_SENDER_ADDRESS='User <user@server.net>'"
+    - "REKOGNOTIFY_SENDER_ADDRESS=user@server.net>"
     - "REKOGNOTIFY_RECEIVER_ADDRESS=user2@server.net"
   devices:
     - "/dev/vchiq"
